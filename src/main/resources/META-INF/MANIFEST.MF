@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: bu
+Created-By: Apache Maven 3.0.5
+Build-Jdk: 1.8.0_112
+Main-Class: com.capgemini.cafe.control.Main
+
+
+

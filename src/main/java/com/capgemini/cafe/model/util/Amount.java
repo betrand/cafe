@@ -14,11 +14,20 @@ public class Amount {
         amt = "0.00";
     }
 
+    /**
+     *
+     * @param amount
+     * @return Amount incremented with amount
+     */
     public Amount add(String amount) {
         amt = new BigDecimal(amount).add(new BigDecimal(amt)).toPlainString();
         return this;
     }
 
+    /**
+     *
+     * @return a String format of the Amount
+     */
     public String toMoney() {
         int pound = Integer.parseInt(amt.substring(0, amt.indexOf(".")));
         if (pound < 1) {
