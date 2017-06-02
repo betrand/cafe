@@ -28,6 +28,11 @@ public class Amount {
         return this;
     }
 
+    /**
+     *
+     * @return total bill Amount with 10% service charge if Purchase Items
+     * contain Food no maximum service charges apply
+     */
     public Amount addFoodServiceCharge() {
         BigDecimal total = new BigDecimal(amt);
         amt = total.add(total.multiply(new BigDecimal(FOOD_SERVICE_CHARGE))
@@ -35,6 +40,11 @@ public class Amount {
         return this;
     }
 
+    /**
+     *
+     * @return total bill Amount with 20% service charge if Purchase Items
+     * contain Hot Food up to a maximum of £20
+     */
     public Amount addHotFoodServiceCharge() {
         BigDecimal total = new BigDecimal(amt);
         BigDecimal totalServiceCharge = total.add(total.multiply(new BigDecimal(
