@@ -71,4 +71,18 @@ public class BillingTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test that a list of drink, cold & hot Food Items returns correct Bill
+     * with 20% Service Charge however applies only a maximum of £20 service
+     * charge when items contain hot food.
+     *
+     */
+    @Test
+    public void testGetBillForDrinksColdAndHotFoodMax() {
+        String[] purchaseItems = {"Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich"};
+        String expResult = "£146.00";
+        String result = Billing.getBill(purchaseItems);
+        assertEquals(expResult, result);
+    }
+
 }
