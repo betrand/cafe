@@ -84,5 +84,4 @@ public class BillingTest {
         String result = Billing.getBill(purchaseItems);
         assertEquals(expResult, result);
     }
-
 }
