@@ -47,13 +47,26 @@ public class BillingTest {
     }
 
     /**
-     * Test that a list of drink & Cold Food Items returns correct Bill 
+     * Test that a list of drink & Cold Food Items returns correct Bill
      *
      */
     @Test
     public void testGetBillForDrinksAndColdFood() {
         String[] purchaseItems = {"Cola", "Coffee", "Cheese Sandwich"};
         String expResult = "£3.85";
+        String result = Billing.getBill(purchaseItems);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test that a list of drink, cold & hot Food Items returns correct Bill
+     * with 20% Service Charge.
+     *
+     */
+    @Test
+    public void testGetBillForDrinksColdAndHotFood() {
+        String[] purchaseItems = {"Cola", "Coffee", "Cheese Sandwich", "Steak Sandwich"};
+        String expResult = "£9.60";
         String result = Billing.getBill(purchaseItems);
         assertEquals(expResult, result);
     }
