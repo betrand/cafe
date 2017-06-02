@@ -53,7 +53,7 @@ public class BillingTest {
     @Test
     public void testGetBillForDrinksAndColdFood() {
         String[] purchaseItems = {"Cola", "Coffee", "Cheese Sandwich"};
-        String expResult = "£3.50";
+        String expResult = "£3.85";
         String result = Billing.getBill(purchaseItems);
         assertEquals(expResult, result);
     }
