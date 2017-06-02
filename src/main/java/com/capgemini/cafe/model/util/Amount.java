@@ -1,6 +1,7 @@
 package com.capgemini.cafe.model.util;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  *
@@ -9,6 +10,9 @@ import java.math.BigDecimal;
 public class Amount {
 
     private static String amt = "0.00";
+    private static final String FOOD_SERVICE_CHARGE = "0.10";
+    private static final String HOT_FOOD_SERVICE_CHARGE = "0.20";
+    private static final int MAX_HOT_FOOD_SERVICE_CHARGE = 20;
 
     public Amount() {
         amt = "0.00";
@@ -21,6 +25,25 @@ public class Amount {
      */
     public Amount add(String amount) {
         amt = new BigDecimal(amount).add(new BigDecimal(amt)).toPlainString();
+        return this;
+    }
+
+    public Amount addFoodServiceCharge() {
+        BigDecimal total = new BigDecimal(amt);
+        amt = total.add(total.multiply(new BigDecimal(FOOD_SERVICE_CHARGE))
+                .setScale(2, RoundingMode.HALF_EVEN)).toPlainString();
+        return this;
+    }
+
+    public Amount addHotFoodServiceCharge() {
+        BigDecimal total = new BigDecimal(amt);
+        BigDecimal totalServiceCharge = total.add(total.multiply(new BigDecimal(
+                HOT_FOOD_SERVICE_CHARGE)).setScale(2, RoundingMode.HALF_EVEN));
+        if (new BigDecimal(MAX_HOT_FOOD_SERVICE_CHARGE).compareTo(totalServiceCharge) < 1) {
+            totalServiceCharge = total.add(new BigDecimal(MAX_HOT_FOOD_SERVICE_CHARGE))
+                    .setScale(2, RoundingMode.HALF_EVEN);
+        }
+        amt = totalServiceCharge.toPlainString();
         return this;
     }
 
